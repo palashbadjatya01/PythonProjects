@@ -43,7 +43,7 @@ async function loadInfo() {
     $("#opt-count").max = info.total_questions;
     $("#opt-minutes").value = info.default_minutes;
   } catch (e) {
-    $("#bank-size").textContent = "360";
+    $("#bank-size").textContent = "350";
   }
 }
 

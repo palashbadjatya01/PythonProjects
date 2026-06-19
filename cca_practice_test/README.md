@@ -13,7 +13,7 @@ needed once it's running.
 ## Features
 
 - **Fresh test every time.** Each attempt draws a random set of questions from a
-  bank of **360** (6 exams × 60), and shuffles the order. Just start a new test
+  bank of **350** usable questions, and shuffles the order. Just start a new test
   (or refresh) for a different set.
 - **Answers stay hidden.** The correct answers and explanations never reach your
   browser until you submit — grading happens server-side, so you can't peek.

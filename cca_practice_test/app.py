@@ -111,6 +111,8 @@ def tag_topics(text):
 # ---------------------------------------------------------------------------
 OPTION_RE = re.compile(r"^\*\s+(\*\*)?\s*([A-F])\)\s*(.*?)\s*$")
 ANSWER_LINE_RE = re.compile(r"\*\*(?:Correct\s+)?Answer:\s*([A-F])\*\*", re.IGNORECASE)
+# Matches a corrupted stem that is only a "Question N" placeholder.
+MALFORMED_STEM_RE = re.compile(r"Question\s*\d+", re.IGNORECASE)
 
 
 def _clean(text):
@@ -180,6 +182,12 @@ def parse_question_block(block, exam_label, number):
 
     question_text = " ".join(p for p in question_parts if p).strip()
     explanation = " ".join(p for p in explanation_parts if p).strip()
+
+    # Some entries in the upstream bank are corrupted: the real question stem
+    # was replaced by a broken cross-reference like "Question 41", leaving no
+    # actual prompt. Skip these so a blank question is never served.
+    if not question_text or MALFORMED_STEM_RE.fullmatch(question_text):
+        return None
 
     full_text = question_text + " " + " ".join(options.values())
     return {
@@ -514,7 +522,7 @@ def main():
         raise SystemExit(
             "No questions parsed. Ensure the markdown files are in ./questions/"
         )
-    print(f"Loaded {len(QUESTION_BANK)} questions from the bank.")
+    print(f"Loaded {len(QUESTION_BANK)} usable questions from the bank.")
 
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     url = f"http://{args.host}:{args.port}/"
