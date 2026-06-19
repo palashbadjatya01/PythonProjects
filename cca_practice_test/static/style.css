@@ -125,6 +125,8 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 14px;
 }
 .ghost:hover { border-color: var(--accent); }
+button:disabled { opacity: .4; cursor: not-allowed; }
+button:disabled:hover { border-color: var(--border); }
 
 /* Test layout */
 .test-layout { display: grid; grid-template-columns: 1fr 260px; gap: 24px; }

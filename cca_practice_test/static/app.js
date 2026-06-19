@@ -172,7 +172,12 @@ function renderQuestion() {
     opt.appendChild(el("span", "letter", esc(o.letter)));
     opt.appendChild(el("span", "otext", esc(o.text)));
     opt.addEventListener("click", () => {
-      state.answers[q.qid] = o.letter;
+      // Toggle: clicking the already-selected option clears it (deselect).
+      if (state.answers[q.qid] === o.letter) {
+        delete state.answers[q.qid];
+      } else {
+        state.answers[q.qid] = o.letter;
+      }
       renderQuestion();
       updateProgress();
     });
@@ -186,6 +191,8 @@ function renderQuestion() {
   $("#btn-flag").textContent = state.flagged.has(q.qid)
     ? "⚑ Unflag"
     : "⚑ Flag for review";
+  // Clear button is only useful when something is selected.
+  $("#btn-clear").disabled = state.answers[q.qid] === undefined;
   updatePalette();
 }
 
@@ -199,6 +206,12 @@ $("#btn-flag").addEventListener("click", () => {
   const qid = state.quiz.questions[state.current].qid;
   if (state.flagged.has(qid)) state.flagged.delete(qid);
   else state.flagged.add(qid);
+  renderQuestion();
+  updateProgress();
+});
+$("#btn-clear").addEventListener("click", () => {
+  const qid = state.quiz.questions[state.current].qid;
+  delete state.answers[qid];
   renderQuestion();
   updateProgress();
 });
