@@ -60,6 +60,28 @@ python app.py --no-browser       # don't auto-open the browser
 You can also change the question count and time limit right on the start screen
 (or use the quick presets: full 60, half 30, or a quick 10).
 
+### Using it on your phone or tablet
+
+The app is fully mobile-friendly. To access it from another device on the same
+Wi-Fi network, start the server bound to all interfaces:
+
+```bash
+python app.py --host 0.0.0.0
+```
+
+Then find your computer's local IP address:
+
+```bash
+# macOS / Linux
+ipconfig getifaddr en0   # or: hostname -I
+```
+
+Open that IP in your phone's browser — e.g. `http://192.168.1.50:8000`.
+
+> **Note:** `http://0.0.0.0:8000` is not a URL you visit — it's just what the
+> server prints to show it's listening on all interfaces. Always use your
+> machine's actual local IP when connecting from another device.
+
 ---
 
 ## How it works
