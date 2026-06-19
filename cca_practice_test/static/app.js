@@ -71,16 +71,11 @@ document.querySelectorAll(".tab").forEach((tab) => {
 async function loadInfo() {
   try {
     const info = await (await fetch("/api/info")).json();
-    $("#bank-size").textContent = info.total_questions;
-    const resSize = document.getElementById("res-bank-size");
-    if (resSize) resSize.textContent = info.total_questions;
     $("#opt-count").value = info.default_count;
     $("#opt-count").max = info.total_questions;
     $("#opt-minutes").value = info.default_minutes;
   } catch (e) {
-    $("#bank-size").textContent = "470";
-    const resSize = document.getElementById("res-bank-size");
-    if (resSize) resSize.textContent = "470";
+    /* fall back to the static defaults already in the inputs */
   }
 }
 
