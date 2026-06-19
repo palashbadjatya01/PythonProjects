@@ -1,0 +1,12 @@
+transaction_id,customer_id,transaction_amount,transaction_date,status
+t_1,c_1001,250.66,2024-01-15,completed
+t_1,c_1001,1250.66,2024-01-15,completed
+t_2,c_1002,-150.56,2024-01-16,pending
+,c_1003,300.26,2024-01-17,completed 
+t_4,c_1004,200.16,2024-01-18,failed
+t_5,c_1005,350.31,2024-01-19,completed
+t_6,c_1006,400.32,2024-01-20,penfing
+t_7,c_1007,450.33,21-01-2026,completed
+t_8,c_1008,500.34,2024-01-22,failed
+t_9,c_1009,550.26,2024-01-23,completed
+t_10,c_1010,600.36,2024-01-24,pending
