@@ -1,19 +1,24 @@
-# CCA Foundations — Local Practice Test
+# CCA Foundations — Practice Hub
 
-A self-contained, locally-hosted practice exam engine for the **CCA (Claude
-Certified Architect) Foundations** exam. It turns the markdown question bank
-into a timed, randomized test that **hides every answer until you submit**, then
-gives you a full breakdown of how you did and where to focus next.
+A self-contained, locally-hosted study hub for the **CCA (Claude Certified
+Architect) Foundations** exam. It has two tabs:
+
+- **📚 Resources** — what the exam covers, who it's for, official documentation,
+  a curated learning path, and how to prepare.
+- **📝 Practice Test** — a timed, randomized test that **hides every answer until
+  you submit**, then gives you a full breakdown of how you did and where to focus.
 
 Built with the Python **standard library only** — no `pip install`, no internet
-needed once it's running.
+needed to run it (the Resources tab links out to the web).
 
 ---
 
 ## Features
 
+- **Two-tab layout.** A clean Resources study guide plus the practice test app.
+  The tab bar hides automatically during a test for a distraction-free experience.
 - **Fresh test every time.** Each attempt draws a random set of questions from a
-  bank of **350** usable questions, and shuffles the order. Just start a new test
+  bank of **470** usable questions, and shuffles the order. Just start a new test
   (or refresh) for a different set.
 - **Answers stay hidden.** The correct answers and explanations never reach your
   browser until you submit — grading happens server-side, so you can't peek.

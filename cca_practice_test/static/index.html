@@ -3,89 +3,346 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CCA Foundations — Practice Test</title>
+  <title>CCA Foundations — Practice Hub</title>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">CCA Foundations<span class="brand-sub">Practice Test</span></div>
+    <div class="brand">CCA Foundations<span class="brand-sub">Practice Hub</span></div>
     <div id="timer" class="timer hidden">90:00</div>
   </header>
 
+  <!-- TAB NAVIGATION -->
+  <nav class="tabs" id="main-tabs">
+    <button class="tab active" data-tab="resources">📚 Resources</button>
+    <button class="tab" data-tab="practice">📝 Practice Test</button>
+  </nav>
+
   <main id="app">
-    <!-- START SCREEN -->
-    <section id="screen-start" class="screen">
-      <div class="card">
-        <h1>Ready to test yourself?</h1>
+
+    <!-- =============================== -->
+    <!-- RESOURCES TAB                   -->
+    <!-- =============================== -->
+    <div id="tab-resources" class="tab-panel">
+
+      <section class="res-hero">
+        <h1>Claude Certified Architect — Foundations</h1>
         <p class="lead">
-          A fresh, randomized exam is drawn from a bank of
-          <strong id="bank-size">…</strong> questions. Answers stay hidden until
-          you submit. When you finish you'll get your score, the full answer key
-          with explanations, a review of every miss, and a topic-by-topic
-          breakdown of where to focus.
+          Everything you need to prepare for the <strong>CCA Foundations (CCAF)</strong>
+          exam in one place: what the exam covers, who it's for, the official
+          documentation to study, a structured learning path, and a free
+          <a href="#" id="goto-practice">timed practice test</a> built from
+          <strong id="res-bank-size">…</strong> questions.
+        </p>
+        <p class="disclaimer">
+          ⓘ This is an independent, community-built study aid — not an official
+          Anthropic product. Always confirm the current exam objectives on
+          Anthropic's official certification page. Links verified as of 2026.
+        </p>
+      </section>
+
+      <!-- About -->
+      <section class="panel res-panel">
+        <h2>What is this exam?</h2>
+        <p>
+          The Claude Certified Architect — Foundations exam validates that you
+          understand how to <strong>design, build, and reason about applications
+          powered by Claude</strong>. It's a knowledge exam focused on the
+          architectural decisions and best practices an engineer makes when
+          working with the Claude platform — from prompting and the Messages
+          API to tool use, the Model Context Protocol (MCP), agentic systems,
+          Claude Code, safety, and cost optimization.
         </p>
 
-        <div class="settings">
-          <label>
-            Number of questions
-            <input type="number" id="opt-count" min="1" value="60" />
-          </label>
-          <label>
-            Time limit (minutes)
-            <input type="number" id="opt-minutes" min="1" value="90" />
-          </label>
-        </div>
+        <h2>Who should take it?</h2>
+        <ul class="res-list">
+          <li><strong>Software engineers &amp; developers</strong> building AI features or products on the Anthropic API.</li>
+          <li><strong>Solution architects &amp; tech leads</strong> who design LLM-powered systems and need to make sound trade-offs (cost, latency, reliability, safety).</li>
+          <li><strong>AI/ML practitioners</strong> moving from experimentation to production deployments with Claude.</li>
+          <li><strong>Developer advocates, consultants, and founders</strong> who want a recognized credential demonstrating Claude expertise.</li>
+          <li>Anyone who has been building with Claude and wants to <strong>formalize and validate</strong> their foundational knowledge.</li>
+        </ul>
+        <p class="muted-note">
+          No formal prerequisites — but hands-on experience building at least
+          one project with the Claude API or Claude Code makes the material
+          click much faster.
+        </p>
+      </section>
 
-        <div class="presets">
-          <button class="chip" data-count="60" data-min="90">Full exam · 60 Q · 90 min</button>
-          <button class="chip" data-count="30" data-min="40">Half · 30 Q · 40 min</button>
-          <button class="chip" data-count="10" data-min="12">Quick · 10 Q · 12 min</button>
-        </div>
-
-        <button id="btn-start" class="primary big">Start Test</button>
-        <p class="fineprint">Tip: each test reshuffles questions and answer order — refresh anytime for a new set.</p>
-      </div>
-    </section>
-
-    <!-- TEST SCREEN -->
-    <section id="screen-test" class="screen hidden">
-      <div class="test-layout">
-        <div class="test-main">
-          <div id="question-container"></div>
-          <div class="nav-buttons">
-            <button id="btn-prev" class="ghost">← Previous</button>
-            <button id="btn-flag" class="ghost">⚑ Flag for review</button>
-            <button id="btn-next" class="ghost">Next →</button>
+      <!-- What's covered -->
+      <section class="panel res-panel">
+        <h2>What will be asked? — Core domains</h2>
+        <p>
+          The exam draws from these areas. Each maps directly to a topic in the
+          practice test, so your results screen tells you which of these to
+          focus on.
+        </p>
+        <div class="domain-grid">
+          <div class="domain-card">
+            <h3>Prompting &amp; Context Engineering</h3>
+            <p>System prompts, personas, few-shot examples, chain-of-thought, prefilling, negative constraints, context-window management, compaction.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Messages API &amp; Streaming</h3>
+            <p>Roles, content blocks, <code>stop_reason</code>, tool-use loop, streaming events, parameters (<code>temperature</code>, <code>max_tokens</code>), versioning, error handling.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Tool Use &amp; MCP</h3>
+            <p>Tool definitions &amp; schemas, <code>tool_choice</code>, parallel tool calls, the Model Context Protocol — Tools, Resources, Prompts, Roots, Sampling, transports.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Agents &amp; Multi-Agent Systems</h3>
+            <p>Agentic loops, orchestrator–worker patterns, delegation, shared state, parallel vs. sequential execution, checkpointing, error recovery.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Claude Code &amp; Skills</h3>
+            <p>CLAUDE.md, settings &amp; permissions, slash commands, hooks, <code>.claudeignore</code>, MCP integration, agentic development workflows.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Safety, Guardrails &amp; Trust</h3>
+            <p>The Anthropic→operator→user trust hierarchy, prompt injection defense, human-in-the-loop, Constitutional AI &amp; RLHF, honesty boundaries.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Structured Output &amp; Data</h3>
+            <p>JSON schema-constrained output, forced tool use for extraction, multimodal/vision inputs, output formatting reliability.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Performance &amp; Cost</h3>
+            <p>Prompt caching, Message Batches API, model selection (Haiku/Sonnet/Opus), latency optimization, token efficiency.</p>
+          </div>
+          <div class="domain-card">
+            <h3>RAG &amp; Retrieval</h3>
+            <p>Chunking strategies, embeddings, semantic vs. keyword search, reranking, source attribution, grounding on private data.</p>
+          </div>
+          <div class="domain-card">
+            <h3>Evaluation &amp; Testing</h3>
+            <p>Rubric-based evaluation, model-as-judge, why numerical self-confidence is unreliable, regression testing of prompts.</p>
           </div>
         </div>
-        <aside class="test-side">
-          <div class="progress-summary">
-            <div><span id="answered-count">0</span> answered</div>
-            <div><span id="flagged-count">0</span> flagged</div>
-          </div>
-          <div id="palette" class="palette"></div>
-          <button id="btn-submit" class="primary">Submit Test</button>
-        </aside>
-      </div>
-    </section>
+      </section>
 
-    <!-- RESULTS SCREEN -->
-    <section id="screen-results" class="screen hidden">
-      <div id="results-summary"></div>
-      <div id="results-takeaways"></div>
-      <div id="results-topics"></div>
-      <div class="review-header">
-        <h2>Answer key &amp; review</h2>
-        <label class="toggle">
-          <input type="checkbox" id="only-wrong" /> Show only my mistakes
-        </label>
-      </div>
-      <div id="results-review"></div>
-      <div class="center">
-        <button id="btn-restart" class="primary big">Take a new test</button>
-      </div>
-    </section>
+      <!-- Official docs -->
+      <section class="panel res-panel">
+        <h2>Official documentation &amp; references</h2>
+        <p>Anthropic's own docs are the authoritative source. Study these directly:</p>
+        <div class="link-grid">
+          <a class="link-card" href="https://docs.claude.com" target="_blank" rel="noopener">
+            <span class="lc-title">Claude / Anthropic Docs</span>
+            <span class="lc-desc">The documentation home — start here.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/api/overview" target="_blank" rel="noopener">
+            <span class="lc-title">Messages API Reference</span>
+            <span class="lc-desc">Endpoints, parameters, request/response format.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">
+            <span class="lc-title">Prompt Engineering Guide</span>
+            <span class="lc-desc">System prompts, examples, chain-of-thought, prefilling.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener">
+            <span class="lc-title">Tool Use</span>
+            <span class="lc-desc">Defining tools, the tool-use loop, tool_choice.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/docs/build-with-claude/extended-thinking" target="_blank" rel="noopener">
+            <span class="lc-title">Extended Thinking</span>
+            <span class="lc-desc">budget_tokens, thinking blocks, constraints.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/docs/build-with-claude/prompt-caching" target="_blank" rel="noopener">
+            <span class="lc-title">Prompt Caching</span>
+            <span class="lc-desc">Cache breakpoints, TTL, and cost mechanics.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/docs/build-with-claude/batch-processing" target="_blank" rel="noopener">
+            <span class="lc-title">Message Batches API</span>
+            <span class="lc-desc">Asynchronous, discounted bulk processing.</span>
+          </a>
+          <a class="link-card" href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener">
+            <span class="lc-title">Claude Code Docs</span>
+            <span class="lc-desc">CLAUDE.md, settings, hooks, slash commands, MCP.</span>
+          </a>
+          <a class="link-card" href="https://modelcontextprotocol.io" target="_blank" rel="noopener">
+            <span class="lc-title">Model Context Protocol (MCP)</span>
+            <span class="lc-desc">The official MCP spec: Tools, Resources, Prompts.</span>
+          </a>
+          <a class="link-card" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">
+            <span class="lc-title">Building Effective Agents</span>
+            <span class="lc-desc">Anthropic's foundational guide to agent patterns.</span>
+          </a>
+          <a class="link-card" href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener">
+            <span class="lc-title">Anthropic Cookbook</span>
+            <span class="lc-desc">Runnable code recipes for common patterns.</span>
+          </a>
+          <a class="link-card" href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank" rel="noopener">
+            <span class="lc-title">Build with the Claude API (Official Course)</span>
+            <span class="lc-desc">Anthropic Academy's hands-on API course.</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Learning path -->
+      <section class="panel res-panel">
+        <h2>Recommended learning path</h2>
+        <p>
+          A community-curated, leveled path. <strong>Pro tip: don't binge it.</strong>
+          Do one level per sitting, and actually apply each guide before moving
+          to the next.
+        </p>
+        <p>
+          Spend a day mastering Claude here:
+          <a href="http://claude101.com" target="_blank" rel="noopener">claude101.com</a>
+        </p>
+
+        <div class="level">
+          <div class="level-head"><span class="level-badge">Level 1</span> The basics · ~24 min</div>
+          <ul class="res-list">
+            <li><a href="https://ruben.substack.com/p/claude-for-dummies" target="_blank" rel="noopener">Claude For Dummies</a></li>
+            <li><a href="http://how-to-claude.ai" target="_blank" rel="noopener">Claude Setup</a></li>
+          </ul>
+        </div>
+
+        <div class="level">
+          <div class="level-head"><span class="level-badge">Level 2</span> Real workflows · ~1 hour</div>
+          <ul class="res-list">
+            <li><a href="http://claude-co.work" target="_blank" rel="noopener">Claude Cowork</a></li>
+            <li><a href="http://how-claude.team" target="_blank" rel="noopener">Claude for Teams</a></li>
+            <li><a href="http://claudedesign.free" target="_blank" rel="noopener">Claude Design</a></li>
+            <li><a href="https://ruben.substack.com/p/claude-cowork-project" target="_blank" rel="noopener">Cowork + Projects</a></li>
+            <li><a href="http://how-to-gamma.ai" target="_blank" rel="noopener">Claude for Slides</a></li>
+            <li><a href="http://claude-skills.free" target="_blank" rel="noopener">Claude Skills</a></li>
+          </ul>
+        </div>
+
+        <div class="level">
+          <div class="level-head"><span class="level-badge">Level 3</span> The pro moves · ~3.5 hours</div>
+          <ul class="res-list">
+            <li><a href="https://ruben.substack.com/p/i-love-to-be-right" target="_blank" rel="noopener">Avoid Sycophancy</a></li>
+            <li><a href="http://claudecode.free" target="_blank" rel="noopener">Claude Code</a></li>
+            <li><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener">Claude 101 (Official)</a></li>
+            <li><a href="https://ruben.substack.com/p/how-to-stop-hitting-claude-usage" target="_blank" rel="noopener">Stop Hitting Claude Limits</a></li>
+            <li><a href="https://ruben.substack.com/p/stop-prompting-claude" target="_blank" rel="noopener">Stop Prompting</a></li>
+          </ul>
+        </div>
+
+        <div class="level">
+          <div class="level-head"><span class="level-badge">Level 4</span> Expert mode · ~8 hours</div>
+          <ul class="res-list">
+            <li><a href="https://ruben.substack.com/p/claude-computer" target="_blank" rel="noopener">Claude Computer</a></li>
+            <li><a href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank" rel="noopener">Build with Claude API (Official)</a></li>
+          </ul>
+        </div>
+
+        <div class="alt-path">
+          <h3>Focused CCAF deep-dives</h3>
+          <p>Targeted write-ups specifically on the Foundations exam:</p>
+          <ul class="res-list">
+            <li><a href="https://open.substack.com/pub/devshorts/p/claude-certified-architect-foundations-fe5?r=8mh7no&utm_medium=ios" target="_blank" rel="noopener">CCA Foundations — devshorts (Part 2)</a></li>
+            <li><a href="https://open.substack.com/pub/devshorts/p/claude-certified-architect-foundations?r=8mh7no&utm_medium=ios" target="_blank" rel="noopener">CCA Foundations — devshorts (Part 1)</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- How to prepare -->
+      <section class="panel res-panel">
+        <h2>How should you prepare?</h2>
+        <ol class="prep-steps">
+          <li><strong>Build something first.</strong> Nothing cements the concepts like shipping a small project — an agent with a tool, a RAG bot, or an MCP server. The exam rewards practical intuition.</li>
+          <li><strong>Read the official docs above</strong> for each domain. Skim broadly first, then go deep on the areas you're least comfortable with.</li>
+          <li><strong>Work the learning path</strong> one level at a time. Apply each guide before moving on.</li>
+          <li><strong>Take timed practice tests</strong> in the Practice Test tab. Simulate real conditions: 60 questions, 90 minutes, no peeking.</li>
+          <li><strong>Use the focus breakdown.</strong> After each test, the results screen ranks your weakest domains. Study those, then retake — every test reshuffles for a fresh set.</li>
+          <li><strong>Active recall beats re-reading.</strong> For every question you miss, write one sentence explaining why the right answer is right <em>and</em> why your choice was wrong.</li>
+          <li><strong>Aim consistently above the pass line</strong> (70%) across several different randomized tests before booking the real exam.</li>
+        </ol>
+        <div class="center" style="margin-top:22px;">
+          <button class="primary big" id="goto-practice-btn" style="max-width:360px;">Go to the Practice Test →</button>
+        </div>
+      </section>
+
+    </div><!-- /tab-resources -->
+
+    <!-- =============================== -->
+    <!-- PRACTICE TEST TAB               -->
+    <!-- =============================== -->
+    <div id="tab-practice" class="tab-panel hidden">
+
+      <!-- START SCREEN -->
+      <section id="screen-start" class="screen">
+        <div class="card">
+          <h1>Ready to test yourself?</h1>
+          <p class="lead">
+            A fresh, randomized exam is drawn from a bank of
+            <strong id="bank-size">…</strong> questions. Answers stay hidden until
+            you submit. When you finish you'll get your score, the full answer key
+            with explanations, a review of every miss, and a topic-by-topic
+            breakdown of where to focus.
+          </p>
+
+          <div class="settings">
+            <label>
+              Number of questions
+              <input type="number" id="opt-count" min="1" value="60" />
+            </label>
+            <label>
+              Time limit (minutes)
+              <input type="number" id="opt-minutes" min="1" value="90" />
+            </label>
+          </div>
+
+          <div class="presets">
+            <button class="chip" data-count="60" data-min="90">Full exam · 60 Q · 90 min</button>
+            <button class="chip" data-count="30" data-min="40">Half · 30 Q · 40 min</button>
+            <button class="chip" data-count="10" data-min="12">Quick · 10 Q · 12 min</button>
+          </div>
+
+          <button id="btn-start" class="primary big">Start Test</button>
+          <p class="fineprint">Tip: each test reshuffles questions and answer order — refresh anytime for a new set.</p>
+        </div>
+      </section>
+
+      <!-- TEST SCREEN -->
+      <section id="screen-test" class="screen hidden">
+        <div class="test-layout">
+          <div class="test-main">
+            <div id="question-container"></div>
+            <div class="nav-buttons">
+              <button id="btn-prev" class="ghost">← Previous</button>
+              <button id="btn-flag" class="ghost">⚑ Flag for review</button>
+              <button id="btn-next" class="ghost">Next →</button>
+            </div>
+          </div>
+          <aside class="test-side">
+            <div class="progress-summary">
+              <div><span id="answered-count">0</span> answered</div>
+              <div><span id="flagged-count">0</span> flagged</div>
+            </div>
+            <div id="palette" class="palette"></div>
+            <button id="btn-submit" class="primary">Submit Test</button>
+          </aside>
+        </div>
+      </section>
+
+      <!-- RESULTS SCREEN -->
+      <section id="screen-results" class="screen hidden">
+        <div id="results-summary"></div>
+        <div id="results-takeaways"></div>
+        <div id="results-topics"></div>
+        <div class="review-header">
+          <h2>Answer key &amp; review</h2>
+          <label class="toggle">
+            <input type="checkbox" id="only-wrong" /> Show only my mistakes
+          </label>
+        </div>
+        <div id="results-review"></div>
+        <div class="center">
+          <button id="btn-restart" class="primary big">Take a new test</button>
+        </div>
+      </section>
+
+    </div><!-- /tab-practice -->
+
   </main>
+
+  <footer class="site-footer">
+    <p>Independent community study aid for the Claude Certified Architect — Foundations exam. Not affiliated with Anthropic.</p>
+  </footer>
 
   <script src="/app.js"></script>
 </body>

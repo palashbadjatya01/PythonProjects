@@ -33,17 +33,54 @@ function showScreen(id) {
 }
 
 // ---------------------------------------------------------------------------
+// Tab navigation
+// ---------------------------------------------------------------------------
+function switchTab(name) {
+  // Don't allow leaving an in-progress test by mistake.
+  if (name !== "practice" && state.quiz && !state.submitted) {
+    const ok = confirm(
+      "A test is in progress. Leaving this tab won't stop the timer. Switch anyway?"
+    );
+    if (!ok) return;
+  }
+  document.querySelectorAll(".tab").forEach((t) =>
+    t.classList.toggle("active", t.dataset.tab === name)
+  );
+  document.querySelectorAll(".tab-panel").forEach((p) =>
+    p.classList.toggle("hidden", p.id !== "tab-" + name)
+  );
+  window.scrollTo(0, 0);
+}
+
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => switchTab(tab.dataset.tab));
+});
+// "Go to practice" shortcuts on the resources tab.
+["goto-practice", "goto-practice-btn"].forEach((id) => {
+  const node = document.getElementById(id);
+  if (node)
+    node.addEventListener("click", (e) => {
+      e.preventDefault();
+      switchTab("practice");
+    });
+});
+
+// ---------------------------------------------------------------------------
 // Start screen
 // ---------------------------------------------------------------------------
 async function loadInfo() {
   try {
     const info = await (await fetch("/api/info")).json();
     $("#bank-size").textContent = info.total_questions;
+    const resSize = document.getElementById("res-bank-size");
+    if (resSize) resSize.textContent = info.total_questions;
     $("#opt-count").value = info.default_count;
     $("#opt-count").max = info.total_questions;
     $("#opt-minutes").value = info.default_minutes;
   } catch (e) {
-    $("#bank-size").textContent = "350";
+    $("#bank-size").textContent = "470";
+    const resSize = document.getElementById("res-bank-size");
+    if (resSize) resSize.textContent = "470";
   }
 }
 
@@ -82,6 +119,7 @@ async function startTest() {
   renderQuestion();
   startTimer();
   $("#timer").classList.remove("hidden");
+  $("#main-tabs").classList.add("hidden"); // distraction-free during the test
   showScreen("screen-test");
 }
 
@@ -233,6 +271,7 @@ async function submitTest(auto) {
     return;
   }
   $("#timer").classList.add("hidden");
+  $("#main-tabs").classList.remove("hidden"); // restore tabs after the test
   renderResults(report, auto);
   showScreen("screen-results");
 }
