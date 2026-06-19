@@ -125,6 +125,8 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 14px;
 }
 .ghost:hover { border-color: var(--accent); }
+.ghost.danger-text { color: var(--red); }
+.ghost.danger-text:hover { border-color: var(--red); background: var(--red-soft); }
 button:disabled { opacity: .4; cursor: not-allowed; }
 button:disabled:hover { border-color: var(--border); }
 
@@ -184,6 +186,8 @@ button:disabled:hover { border-color: var(--border); }
   position: sticky;
   top: 84px;
 }
+.test-side #btn-submit { width: 100%; }
+.test-side #btn-abandon { width: 100%; margin-top: 8px; }
 .progress-summary { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 14px; }
 .progress-summary span { color: var(--text); font-weight: 700; }
 .palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 16px; }

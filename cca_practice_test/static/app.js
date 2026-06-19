@@ -211,6 +211,27 @@ $("#btn-clear").addEventListener("click", () => {
   updateProgress();
 });
 $("#btn-submit").addEventListener("click", () => submitTest(false));
+$("#btn-abandon").addEventListener("click", abandonTest);
+
+// Abandon the in-progress test and return to the start screen.
+function abandonTest() {
+  if (state.submitted) return;
+  const ok = confirm(
+    "Abandon this test? Your progress will be discarded and you'll return to the start screen."
+  );
+  if (!ok) return;
+  clearInterval(state.timerHandle);
+  state.quiz = null;
+  state.answers = {};
+  state.flagged = new Set();
+  state.current = 0;
+  state.startTime = null;
+  state.deadline = null;
+  state.submitted = false;
+  $("#timer").classList.add("hidden");
+  $("#main-tabs").classList.remove("hidden"); // restore tabs
+  showScreen("screen-start");
+}
 
 // ---------------------------------------------------------------------------
 // Palette / progress
