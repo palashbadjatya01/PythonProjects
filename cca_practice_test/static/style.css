@@ -440,3 +440,92 @@ button { font-family: inherit; cursor: pointer; }
   margin-top: 40px;
 }
 .site-footer p { margin: 0; }
+
+/* ===================================================================== */
+/* Resources — exam facts, domain weightings, course path (PDF guide)    */
+/* ===================================================================== */
+.block-title { font-size: 15px; margin: 22px 0 10px; color: var(--accent-2); }
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 8px 0 4px;
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.fact-k { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); }
+.fact-v { font-size: 14px; color: var(--text); font-weight: 600; }
+.fact-v a { color: var(--accent-2); text-decoration: none; }
+.fact-v a:hover { text-decoration: underline; }
+
+/* Weighted domain rows */
+.weight-domain { border-left: none; padding: 0; margin: 16px 0; }
+.domain-bar-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.domain-num {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #fff;
+  background: var(--border);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.domain-title { font-weight: 700; font-size: 15px; color: var(--text); flex: 1; }
+.domain-pct { font-weight: 800; font-size: 16px; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+.weight-bar {
+  background: var(--surface-2);
+  border-radius: 999px;
+  height: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.weight-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+.domain-sub { font-size: 13px; color: var(--muted); margin: 8px 0 0; line-height: 1.55; }
+.domain-sub code { font-size: 12px; }
+
+/* Official course path */
+.course-path { list-style: none; padding: 0; margin: 14px 0; counter-reset: none; }
+.course-path li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.course-path li:last-child { border-bottom: none; }
+.course-step {
+  flex: 0 0 28px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+.course-path strong { display: block; font-size: 15px; margin-bottom: 2px; }
+.course-path strong a { color: var(--text); text-decoration: none; }
+.course-path strong a:hover { color: var(--accent-2); }
+.course-desc { font-size: 13px; color: var(--muted); }

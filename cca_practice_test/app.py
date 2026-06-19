@@ -35,8 +35,8 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 # Default test settings
 DEFAULT_QUESTION_COUNT = 60
-DEFAULT_MINUTES = 90
-PASS_MARK = 0.70  # 70% to pass (typical certification threshold)
+DEFAULT_MINUTES = 120
+PASS_MARK = 0.72  # Official CCA-F passing score is 720/1000 (~72%)
 
 
 # ---------------------------------------------------------------------------

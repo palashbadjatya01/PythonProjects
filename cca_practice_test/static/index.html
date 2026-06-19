@@ -36,8 +36,11 @@
         </p>
         <p class="disclaimer">
           ⓘ This is an independent, community-built study aid — not an official
-          Anthropic product. Always confirm the current exam objectives on
-          Anthropic's official certification page. Links verified as of 2026.
+          Anthropic product. Exam facts (format, weightings, scenarios) are
+          summarized from a publicly circulated CCA-F study guide; always confirm
+          the current objectives on the official
+          <a href="https://anthropic.skilljar.com" target="_blank" rel="noopener">Anthropic Skilljar</a>
+          portal. Links verified as of 2026.
         </p>
       </section>
 
@@ -45,78 +48,148 @@
       <section class="panel res-panel">
         <h2>What is this exam?</h2>
         <p>
-          The Claude Certified Architect — Foundations exam validates that you
-          understand how to <strong>design, build, and reason about applications
-          powered by Claude</strong>. It's a knowledge exam focused on the
-          architectural decisions and best practices an engineer makes when
-          working with the Claude platform — from prompting and the Messages
-          API to tool use, the Model Context Protocol (MCP), agentic systems,
-          Claude Code, safety, and cost optimization.
+          The Claude Certified Architect — Foundations (CCA-F) is a
+          <strong>professional-level technical credential from Anthropic</strong>.
+          It validates your ability to design, build, and deploy robust,
+          production-grade applications using the Claude model family, the
+          Claude Agent SDK, the Model Context Protocol (MCP), and Claude Code.
+        </p>
+        <p>
+          Unlike basic AI-literacy certifications, this exam is heavily
+          <strong>scenario-based</strong>: it focuses on high-stakes
+          architectural trade-offs, mitigating non-deterministic behavior, and
+          working within real production-system limits. Most questions ask you
+          to pick the <em>best</em> option among several technically viable ones.
         </p>
 
+        <h3 class="block-title">Exam at a glance</h3>
+        <div class="facts-grid">
+          <div class="fact"><span class="fact-k">Format</span><span class="fact-v">Multiple-choice, scenario-based</span></div>
+          <div class="fact"><span class="fact-k">Duration</span><span class="fact-v">120 minutes</span></div>
+          <div class="fact"><span class="fact-k">Questions</span><span class="fact-v">60</span></div>
+          <div class="fact"><span class="fact-k">Passing score</span><span class="fact-v">720 / 1000 (≈ 72%)</span></div>
+          <div class="fact"><span class="fact-k">Level</span><span class="fact-v">301 — intermediate-to-advanced</span></div>
+          <div class="fact"><span class="fact-k">Cost</span><span class="fact-v">Free for the first 5,000 partner-company employees</span></div>
+          <div class="fact"><span class="fact-k">Official portal</span><span class="fact-v"><a href="https://anthropic.skilljar.com" target="_blank" rel="noopener">Anthropic Skilljar</a></span></div>
+        </div>
+
         <h2>Who should take it?</h2>
+        <p>
+          Solutions architects, software developers, and AI engineers with
+          <strong>roughly 6+ months of hands-on experience building production
+          systems with the Claude API</strong>. In practice that includes:
+        </p>
         <ul class="res-list">
-          <li><strong>Software engineers &amp; developers</strong> building AI features or products on the Anthropic API.</li>
-          <li><strong>Solution architects &amp; tech leads</strong> who design LLM-powered systems and need to make sound trade-offs (cost, latency, reliability, safety).</li>
+          <li><strong>Solution architects &amp; tech leads</strong> designing LLM-powered systems and making cost/latency/reliability/safety trade-offs.</li>
+          <li><strong>Software engineers &amp; developers</strong> shipping AI features and agents on the Anthropic API.</li>
           <li><strong>AI/ML practitioners</strong> moving from experimentation to production deployments with Claude.</li>
           <li><strong>Developer advocates, consultants, and founders</strong> who want a recognized credential demonstrating Claude expertise.</li>
-          <li>Anyone who has been building with Claude and wants to <strong>formalize and validate</strong> their foundational knowledge.</li>
         </ul>
         <p class="muted-note">
-          No formal prerequisites — but hands-on experience building at least
-          one project with the Claude API or Claude Code makes the material
-          click much faster.
+          No formal prerequisites — but building at least one real project with
+          the Claude API, the Agent SDK, or Claude Code makes the scenario
+          questions far easier to reason about.
         </p>
       </section>
 
-      <!-- What's covered -->
+      <!-- Domain weightings (official) -->
       <section class="panel res-panel">
-        <h2>What will be asked? — Core domains</h2>
+        <h2>What will be asked? — The 5 exam domains &amp; weightings</h2>
         <p>
-          The exam draws from these areas. Each maps directly to a topic in the
-          practice test, so your results screen tells you which of these to
-          focus on.
+          The exam is organized into five domains. The percentages are the
+          <strong>official exam weightings</strong> — spend your study time in
+          proportion to them. Domain 1 alone is over a quarter of the exam.
+        </p>
+
+        <div class="domain weight-domain">
+          <div class="domain-bar-head">
+            <span class="domain-num">Domain 1</span>
+            <span class="domain-title">Agentic Architecture &amp; Orchestration</span>
+            <span class="domain-pct">27%</span>
+          </div>
+          <div class="weight-bar"><span style="width:27%"></span></div>
+          <p class="domain-sub">Agentic loops &amp; terminating conditions (Agent SDK), coordinator-subagent (hub-and-spoke) orchestration, context isolation to prevent leakage, lifecycle hooks, task decomposition, and state tracking / session resumption after failures.</p>
+        </div>
+
+        <div class="domain weight-domain">
+          <div class="domain-bar-head">
+            <span class="domain-num">Domain 3</span>
+            <span class="domain-title">Claude Code Configuration &amp; Workflows</span>
+            <span class="domain-pct">20%</span>
+          </div>
+          <div class="weight-bar"><span style="width:20%"></span></div>
+          <p class="domain-sub">CLAUDE.md scoping hierarchy (user → project → directory), conditional rule loading via <code>.claude/rules/</code> with YAML frontmatter, Plan Mode vs. Direct Execution, CI/CD integration, and custom slash commands in <code>.claude/commands/</code>.</p>
+        </div>
+
+        <div class="domain weight-domain">
+          <div class="domain-bar-head">
+            <span class="domain-num">Domain 4</span>
+            <span class="domain-title">Prompt Engineering &amp; Structured Output</span>
+            <span class="domain-pct">20%</span>
+          </div>
+          <div class="weight-bar"><span style="width:20%"></span></div>
+          <p class="domain-sub">Structured output via <code>tool_use</code> + JSON schema (preferred over asking for raw JSON), few-shot prompting, validation &amp; retry loops for self-correction, batch vs. synchronous processing, and multi-instance "critic" verification.</p>
+        </div>
+
+        <div class="domain weight-domain">
+          <div class="domain-bar-head">
+            <span class="domain-num">Domain 2</span>
+            <span class="domain-title">Tool Design &amp; MCP Integration</span>
+            <span class="domain-pct">18%</span>
+          </div>
+          <div class="weight-bar"><span style="width:18%"></span></div>
+          <p class="domain-sub">MCP primitives — Tools (state-changing actions), Resources (read-only data), Prompts (reusable templates); tool boundaries (split vs. consolidate), "descriptions as code," and error propagation with structured error schemas and Human-in-the-Loop triggers.</p>
+        </div>
+
+        <div class="domain weight-domain">
+          <div class="domain-bar-head">
+            <span class="domain-num">Domain 5</span>
+            <span class="domain-title">Context Management &amp; Reliability</span>
+            <span class="domain-pct">15%</span>
+          </div>
+          <div class="weight-bar"><span style="width:15%"></span></div>
+          <p class="domain-sub">Context trimming &amp; windowing, trimming vs. progressive summarization trade-offs, token economics with prompt caching, and provenance / confidence thresholds for autonomous decisions vs. routing to human review.</p>
+        </div>
+
+        <p class="muted-note">
+          The practice test tags each question with finer-grained topics and
+          shows a weakest-first breakdown on your results screen — use it to find
+          which of these domains needs the most work.
+        </p>
+      </section>
+
+      <!-- Scenarios -->
+      <section class="panel res-panel">
+        <h2>The 6 core architectural scenarios</h2>
+        <p>
+          The exam drops you into the shoes of a lead architect. It randomly
+          selects <strong>4 of these 6 scenario environments</strong> — be ready
+          for all six.
         </p>
         <div class="domain-grid">
           <div class="domain-card">
-            <h3>Prompting &amp; Context Engineering</h3>
-            <p>System prompts, personas, few-shot examples, chain-of-thought, prefilling, negative constraints, context-window management, compaction.</p>
+            <h3>1 · Customer Support Resolution Agent</h3>
+            <p>Resolve returns, disputes, and issues. Trade-off: autonomous execution vs. Human-in-the-Loop review, using confidence thresholds and a predictable escalation matrix.</p>
           </div>
           <div class="domain-card">
-            <h3>Messages API &amp; Streaming</h3>
-            <p>Roles, content blocks, <code>stop_reason</code>, tool-use loop, streaming events, parameters (<code>temperature</code>, <code>max_tokens</code>), versioning, error handling.</p>
+            <h3>2 · Code Generation with Claude Code</h3>
+            <p>Scale Claude Code across a multi-developer team. Trade-off: resolving conflicting project constraints, e.g. a user-scope config overriding project-wide conventions via the CLAUDE.md hierarchy.</p>
           </div>
           <div class="domain-card">
-            <h3>Tool Use &amp; MCP</h3>
-            <p>Tool definitions &amp; schemas, <code>tool_choice</code>, parallel tool calls, the Model Context Protocol — Tools, Resources, Prompts, Roots, Sampling, transports.</p>
+            <h3>3 · Multi-Agent Research System</h3>
+            <p>A coordinator-subagent framework that crawls documents and builds a dossier. Trade-off: preventing context leakage / token bloat by passing each subagent only the snippet it needs.</p>
           </div>
           <div class="domain-card">
-            <h3>Agents &amp; Multi-Agent Systems</h3>
-            <p>Agentic loops, orchestrator–worker patterns, delegation, shared state, parallel vs. sequential execution, checkpointing, error recovery.</p>
+            <h3>4 · Developer Productivity Assistants</h3>
+            <p>A desktop assistant using built-in tools (Bash, File Editor) and custom MCP servers. Trade-off: security boundaries vs. autonomous capability; single-purpose tools with explicit JSON inputs.</p>
           </div>
           <div class="domain-card">
-            <h3>Claude Code &amp; Skills</h3>
-            <p>CLAUDE.md, settings &amp; permissions, slash commands, hooks, <code>.claudeignore</code>, MCP integration, agentic development workflows.</p>
+            <h3>5 · Claude Code for CI/CD Automation</h3>
+            <p>Claude Code in GitHub Actions / GitLab pipelines for review, test generation, and PR verification. Trade-off: avoiding hung pipelines — run non-interactively (the <code>-p</code> flag, stdin redirects).</p>
           </div>
           <div class="domain-card">
-            <h3>Safety, Guardrails &amp; Trust</h3>
-            <p>The Anthropic→operator→user trust hierarchy, prompt injection defense, human-in-the-loop, Constitutional AI &amp; RLHF, honesty boundaries.</p>
-          </div>
-          <div class="domain-card">
-            <h3>Structured Output &amp; Data</h3>
-            <p>JSON schema-constrained output, forced tool use for extraction, multimodal/vision inputs, output formatting reliability.</p>
-          </div>
-          <div class="domain-card">
-            <h3>Performance &amp; Cost</h3>
-            <p>Prompt caching, Message Batches API, model selection (Haiku/Sonnet/Opus), latency optimization, token efficiency.</p>
-          </div>
-          <div class="domain-card">
-            <h3>RAG &amp; Retrieval</h3>
-            <p>Chunking strategies, embeddings, semantic vs. keyword search, reranking, source attribution, grounding on private data.</p>
-          </div>
-          <div class="domain-card">
-            <h3>Evaluation &amp; Testing</h3>
-            <p>Rubric-based evaluation, model-as-judge, why numerical self-confidence is unreliable, regression testing of prompts.</p>
+            <h3>6 · Structured Data Extraction Pipelines</h3>
+            <p>Parse millions of irregular PDFs / tax filings / logs into strict schemas. Trade-off: speed vs. validation integrity — a dual-pass, schema-enforced pipeline with retry loops that feed errors back.</p>
           </div>
         </div>
       </section>
@@ -179,11 +252,41 @@
 
       <!-- Learning path -->
       <section class="panel res-panel">
-        <h2>Recommended learning path</h2>
+        <h2>Official prep roadmap — Anthropic Academy</h2>
         <p>
-          A community-curated, leveled path. <strong>Pro tip: don't binge it.</strong>
-          Do one level per sitting, and actually apply each guide before moving
-          to the next.
+          The most direct preparation is Anthropic's own coursework, which maps
+          straight onto the exam domains. Take these <strong>in order</strong> to
+          build up conceptual and implementation knowledge:
+        </p>
+        <ol class="course-path">
+          <li><span class="course-step">1</span>
+            <div><strong><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener">Claude 101</a></strong>
+            <span class="course-desc">Foundational model mechanics, parameters (temperature, Top-P, max tokens), basic prompt structure, safety protocols.</span></div>
+          </li>
+          <li><span class="course-step">2</span>
+            <div><strong><a href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank" rel="noopener">Building with the Claude API</a></strong>
+            <span class="course-desc">API orchestration, prompt-caching optimization, validation &amp; retry loops, dynamic tool execution, structured output. (Domains 2 &amp; 4)</span></div>
+          </li>
+          <li><span class="course-step">3</span>
+            <div><strong>Claude Code in Action</strong>
+            <span class="course-desc">Workflow automation, terminal mechanics, hierarchical rule config via <code>.claude/rules/</code>, execution modes. (Domain 3)</span></div>
+          </li>
+          <li><span class="course-step">4</span>
+            <div><strong>Introduction to MCP</strong>
+            <span class="course-desc">MCP basics, host-client-server topologies, registering local/remote resources, standard tools and prompts. (Domain 2)</span></div>
+          </li>
+          <li><span class="course-step">5</span>
+            <div><strong>MCP: Advanced Topics</strong>
+            <span class="course-desc">Enterprise MCP security, database-heavy actions, bridging server instances, scaling server-side integrations. (Domain 2)</span></div>
+          </li>
+        </ol>
+        <p class="muted-note">Find these on the <a href="https://anthropic.skilljar.com" target="_blank" rel="noopener">Anthropic Skilljar portal</a>. Then take practice exams — the official Skilljar benchmarks, the Practice Test tab here, and (optionally) third-party simulators.</p>
+
+        <h2>Community learning path</h2>
+        <p>
+          A community-curated, leveled path that goes broader on real Claude
+          workflows. <strong>Pro tip: don't binge it.</strong> Do one level per
+          sitting, and actually apply each guide before moving to the next.
         </p>
         <p>
           Spend a day mastering Claude here:
@@ -244,12 +347,13 @@
         <h2>How should you prepare?</h2>
         <ol class="prep-steps">
           <li><strong>Build something first.</strong> Nothing cements the concepts like shipping a small project — an agent with a tool, a RAG bot, or an MCP server. The exam rewards practical intuition.</li>
-          <li><strong>Read the official docs above</strong> for each domain. Skim broadly first, then go deep on the areas you're least comfortable with.</li>
-          <li><strong>Work the learning path</strong> one level at a time. Apply each guide before moving on.</li>
-          <li><strong>Take timed practice tests</strong> in the Practice Test tab. Simulate real conditions: 60 questions, 90 minutes, no peeking.</li>
-          <li><strong>Use the focus breakdown.</strong> After each test, the results screen ranks your weakest domains. Study those, then retake — every test reshuffles for a fresh set.</li>
+          <li><strong>Work the official Anthropic Academy roadmap</strong> in order (Claude 101 → Building with the Claude API → Claude Code in Action → Intro to MCP → MCP Advanced).</li>
+          <li><strong>Study in proportion to the domain weights.</strong> Domain 1 (Agentic Architecture, 27%) deserves the most time; don't over-invest in the 15% domain at its expense.</li>
+          <li><strong>Read the official docs above</strong> for each domain, going deepest on your weakest areas.</li>
+          <li><strong>Take timed practice tests</strong> in the Practice Test tab. Simulate real conditions: 60 questions, 120 minutes, no peeking.</li>
+          <li><strong>Use the focus breakdown.</strong> After each test, the results screen ranks your weakest topics. Study those, then retake — every test reshuffles for a fresh set.</li>
           <li><strong>Active recall beats re-reading.</strong> For every question you miss, write one sentence explaining why the right answer is right <em>and</em> why your choice was wrong.</li>
-          <li><strong>Aim consistently above the pass line</strong> (70%) across several different randomized tests before booking the real exam.</li>
+          <li><strong>Aim consistently above the pass line</strong> (≈ 72%, i.e. 720/1000) across several different randomized tests before booking the real exam.</li>
         </ol>
         <div class="center" style="margin-top:22px;">
           <button class="primary big" id="goto-practice-btn" style="max-width:360px;">Go to the Practice Test →</button>
@@ -282,12 +386,12 @@
             </label>
             <label>
               Time limit (minutes)
-              <input type="number" id="opt-minutes" min="1" value="90" />
+              <input type="number" id="opt-minutes" min="1" value="120" />
             </label>
           </div>
 
           <div class="presets">
-            <button class="chip" data-count="60" data-min="90">Full exam · 60 Q · 90 min</button>
+            <button class="chip" data-count="60" data-min="120">Full exam · 60 Q · 120 min</button>
             <button class="chip" data-count="30" data-min="40">Half · 30 Q · 40 min</button>
             <button class="chip" data-count="10" data-min="12">Quick · 10 Q · 12 min</button>
           </div>
