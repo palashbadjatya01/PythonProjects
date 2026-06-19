@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCA Foundations — Practice Test</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">CCA Foundations<span class="brand-sub">Practice Test</span></div>
+    <div id="timer" class="timer hidden">90:00</div>
+  </header>
+
+  <main id="app">
+    <!-- START SCREEN -->
+    <section id="screen-start" class="screen">
+      <div class="card">
+        <h1>Ready to test yourself?</h1>
+        <p class="lead">
+          A fresh, randomized exam is drawn from a bank of
+          <strong id="bank-size">…</strong> questions. Answers stay hidden until
+          you submit. When you finish you'll get your score, the full answer key
+          with explanations, a review of every miss, and a topic-by-topic
+          breakdown of where to focus.
+        </p>
+
+        <div class="settings">
+          <label>
+            Number of questions
+            <input type="number" id="opt-count" min="1" value="60" />
+          </label>
+          <label>
+            Time limit (minutes)
+            <input type="number" id="opt-minutes" min="1" value="90" />
+          </label>
+        </div>
+
+        <div class="presets">
+          <button class="chip" data-count="60" data-min="90">Full exam · 60 Q · 90 min</button>
+          <button class="chip" data-count="30" data-min="40">Half · 30 Q · 40 min</button>
+          <button class="chip" data-count="10" data-min="12">Quick · 10 Q · 12 min</button>
+        </div>
+
+        <button id="btn-start" class="primary big">Start Test</button>
+        <p class="fineprint">Tip: each test reshuffles questions and answer order — refresh anytime for a new set.</p>
+      </div>
+    </section>
+
+    <!-- TEST SCREEN -->
+    <section id="screen-test" class="screen hidden">
+      <div class="test-layout">
+        <div class="test-main">
+          <div id="question-container"></div>
+          <div class="nav-buttons">
+            <button id="btn-prev" class="ghost">← Previous</button>
+            <button id="btn-flag" class="ghost">⚑ Flag for review</button>
+            <button id="btn-next" class="ghost">Next →</button>
+          </div>
+        </div>
+        <aside class="test-side">
+          <div class="progress-summary">
+            <div><span id="answered-count">0</span> answered</div>
+            <div><span id="flagged-count">0</span> flagged</div>
+          </div>
+          <div id="palette" class="palette"></div>
+          <button id="btn-submit" class="primary">Submit Test</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- RESULTS SCREEN -->
+    <section id="screen-results" class="screen hidden">
+      <div id="results-summary"></div>
+      <div id="results-takeaways"></div>
+      <div id="results-topics"></div>
+      <div class="review-header">
+        <h2>Answer key &amp; review</h2>
+        <label class="toggle">
+          <input type="checkbox" id="only-wrong" /> Show only my mistakes
+        </label>
+      </div>
+      <div id="results-review"></div>
+      <div class="center">
+        <button id="btn-restart" class="primary big">Take a new test</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
